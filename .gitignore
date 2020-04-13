@@ -11,6 +11,9 @@
 # production
 /build
 
+# develop
+/bat
+
 # vscode
 /.vscode
 
