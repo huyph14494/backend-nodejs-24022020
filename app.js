@@ -24,7 +24,9 @@ app.get('/', (req, res) => res.send('Hello World ' + process.env.ABC));
 		const url = await ngrok.connect({ proto: 'http', addr: port }); // https://757c1652.ngrok.io -> http://localhost:3000
 
 		changeNgrok.execCopyFileBat(url);
-		require('./core/init.js')(app);
+		global.url = url;
+		global.__basedir = __dirname;
+		require('./modules/core/init.js')(app);
 	});
 })();
 
