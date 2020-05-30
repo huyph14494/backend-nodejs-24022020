@@ -5,6 +5,8 @@ const ngrok = require('ngrok');
 const port = process.env.PORT || '4000';
 const cors = require('cors');
 const changeNgrok = require('./commons/change-ngrok');
+const fs = require('fs');
+const https = require('https')
 
 // Will print "unhandledRejection err is not defined"
 process.on('unhandledRejection', (error) => {
@@ -25,3 +27,13 @@ app.get('/', (req, res) => res.send('Hello World ' + process.env.ABC));
 		require('./core/init.js')(app);
 	});
 })();
+
+
+// https.createServer({
+// 	key: fs.readFileSync('server.key'),
+//   cert: fs.readFileSync('server.cert')
+// }, app)
+// .listen(port, function () {
+// 	console.log(`Example app listening on port ${port}! Go to https://localhost:${port}/`)
+// 	require('./core/init.js')(app);
+// })
